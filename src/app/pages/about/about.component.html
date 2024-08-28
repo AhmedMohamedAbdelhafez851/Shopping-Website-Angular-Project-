@@ -1,0 +1,73 @@
+<section>
+    <div class="container">
+        <header>
+            <h3>Reactive Forms Example</h3>
+        </header>
+        <article>
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" formControlName="firstName" id="firstName">
+                    @if (form.controls['firstName'].touched && form.controls['firstName'].invalid) {
+                        <div>
+                            @if (form.controls['firstName'].errors && form.controls['firstName'].errors['required']) {
+                                <span class="text-danger">
+                                    First Name is Required
+                                </span>
+                            }
+                            @if (form.controls['firstName'].errors && form.controls['firstName'].errors['minlength']) {
+                                <span class="text-danger">
+                                    First Name is Minmum 3 charcters
+                                </span>
+                            }
+                            @if (form.controls['firstName'].errors && form.controls['firstName'].errors['maxlength']) {
+                                <span class="text-danger">
+                                    First Name is Maximum length 10 charcters
+                                </span>
+                            }
+                        </div>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" formControlName="lastName" id="lastName">
+                    @if (form.controls['lastName'].touched && form.controls['lastName'].invalid) {
+                        <div>
+                            @if (form.controls['lastName'].errors && form.controls['lastName'].errors['required']) {
+                                <span class="text-danger">
+                                    Last Name is Required
+                                </span>
+                            }
+                            @if (form.controls['lastName'].errors && form.controls['lastName'].errors['minlength']) {
+                                <span class="text-danger">
+                                    Last Name is Minmum 3 charcters
+                                </span>
+                            }
+                            @if (form.controls['lastName'].errors && form.controls['lastName'].errors['maxlength']) {
+                                <span class="text-danger">
+                                    Last Name is Maximum length 10 charcters
+                                </span>
+                            }
+                        </div>
+                    }
+                </div>
+                <div class="mb-3">
+                    <label for="userMessage" class="form-label">First Name</label>
+                    <textarea class="form-control" rows="3" formControlName="userMessage" id="userMessage"></textarea>
+                    @if (form.controls['userMessage'].touched && form.controls['userMessage'].invalid) {
+                        <div>
+                            @if (form.controls['userMessage'].errors && form.controls['userMessage'].errors['required']) {
+                                <span class="text-danger">
+                                    Message is Required
+                                </span>
+                            }
+                        </div>
+                    }
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit Form</button>
+                </div>
+            </form>
+        </article>
+    </div>
+</section>

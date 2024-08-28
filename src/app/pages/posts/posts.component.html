@@ -1,0 +1,67 @@
+<section class="container my-5">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between">
+            My Posts
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Post</button>
+        </div>
+        <div class="row">
+            @for(post of posts; track post.id) {
+            <div class="col-lg-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{post.title}}</h5>
+                    <p class="card-text">{{post.message}}</p>
+                    <button class="btn btn-danger" (click)="deleteItem(post.id)">
+                        Delete
+                    </button>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Post</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="addPost()">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Post Title</label>
+                        <input type="text" class="form-control" formControlName="title" id="title">
+                        @if (form.controls['title'].touched && form.controls['title'].invalid) {
+                            <div>
+                                @if (form.controls['title'].errors && form.controls['title'].errors['required']) {
+                                    <span class="text-danger">
+                                        Post Title is Required
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Post Message</label>
+                        <textarea class="form-control" rows="3" formControlName="message" id="message"></textarea>
+                        @if (form.controls['message'].touched && form.controls['message'].invalid) {
+                            <div>
+                                @if (form.controls['message'].errors && form.controls['message'].errors['required']) {
+                                    <span class="text-danger">
+                                        Message is Required
+                                    </span>
+                                }
+                            </div>
+                        }
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Add Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

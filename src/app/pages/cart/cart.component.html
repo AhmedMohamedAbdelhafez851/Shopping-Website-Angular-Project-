@@ -1,0 +1,109 @@
+  <!-- breadcrumb start -->
+  <div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>cart</h2>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">cart</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb End -->
+
+
+<section class="cart-section section-b-space">
+  <div class="container">
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th class="column-image">Image</th>
+          <th class="column-name">Product Name</th>
+          <th class="column-price">Price</th>
+          <th class="column-quantity">Quantity</th>
+          <th class="column-action">Action</th>
+          <th class="column-total">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems">
+          <td class="column-image">
+            <a href="#"><img [src]="item?.imgename" alt="Product Image"></a>
+          </td>
+          <td class="column-name"><a href="#">{{ item?.name }}</a></td>
+          <td class="column-price"><h2>{{ item?.salesprice | currency }}</h2></td>
+          <td class="column-quantity">
+            <div class="qty-box">
+              <div class="input-group">
+                <input 
+                  type="number" 
+                  [(ngModel)]="item.quantity" 
+                  (ngModelChange)="updateQuantity(item, $event)" 
+                  class="form-control input-number" 
+                  min="1"
+                >
+              </div>
+            </div>
+          </td>
+          <td class="column-action">
+            <a href="#" class="icon" (click)="removeItem(item.id)"><i class="ti-close"></i></a>
+          </td>
+          <td class="column-total">
+            <h2 class="td-color">
+              {{ (item?.salesprice || 0) * (item?.quantity || 0) | currency }}
+            </h2>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+     <!-- Total Price Row -->
+     <div class="cart-total">
+      <h2>Total: {{ getTotalPrice() | currency }}</h2>
+    </div>
+  </div>
+</section>
+
+  
+  
+
+
+
+<!-- footer start -->
+<footer class="footer-light">
+    <div class="light-layout">
+        <div class="container">
+            <section class="small-section border-section border-top-0">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="subscribe">
+                            <div>
+                                <h4>KNOW IT ALL FIRST!</h4>
+                                <p>Never Miss Anything From Multikart By Signing Up To Our Newsletter.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <form
+                            action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
+                            class="form-inline subscribe-form auth-form needs-validation" method="post"
+                            id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                            <div class="form-group mx-sm-3">
+                                <input type="text" class="form-control" name="EMAIL" id="mce-EMAIL"
+                                    placeholder="Enter your email" required="required">
+                            </div>
+                            <button type="submit" class="btn btn-solid" id="mc-submit">subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>

@@ -1,0 +1,26 @@
+<section id="tool-bg" class="p-0 height-85 tools_slider">
+    <div *ngFor="let slider of sliders" class="slide-1 home-slider">
+      <div>
+        <div class="home text-center">
+          <img [src]="slider.backgroundImage" alt="" class="bg-img blur-up lazyload">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="slider-contain">
+                  <div>
+                    <h4>{{ slider.title }}</h4>
+                    <h1>{{ slider.subtitle }}</h1>
+                    <a [href]="slider.buttonLink" class="btn btn-solid">{{ slider.buttonText }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngFor="let tool of slider.tools" class="tools-parts" [attr.id]="tool.id">
+              <img [src]="tool.image" class="img-fluid blur-up lazyload" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

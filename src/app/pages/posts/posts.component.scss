@@ -1,0 +1,50 @@
+/* Ensure full height of the viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Flex container for body */
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content area styling */
+.main-content {
+    flex: 1; /* Takes up remaining space between header and footer */
+    padding: 1rem; /* Add padding as needed */
+    margin-top: 80px; /* Push content down, adjust as needed */
+    overflow: auto; /* Handle overflow if content exceeds viewport */
+}
+
+/* Ensure the card fills its container and has some spacing */
+.card {
+    margin: 1rem auto; /* Center and add vertical spacing */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    .card {
+        margin: 0.5rem auto; /* Adjust margins for smaller screens */
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 750px; /* Adjust container width for larger screens */
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 970px; /* Adjust container width for larger screens */
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1170px; /* Adjust container width for extra-large screens */
+    }
+}
